@@ -16,120 +16,106 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
   color:#333;
   text-align:center;
-  background:linear-gradient(180deg,#eef9fb 0%,#fffaf4 100%);
+  background:linear-gradient(180deg,#eef9fb 0%,#fffaf3 100%);
   min-height:100vh;
 }
 
 .container{
-  max-width:650px;
+  max-width:520px;
   margin:auto;
-  padding:35px 20px 60px;
+  padding:45px 20px 55px;
 }
 
 .villa{
-  font-size:16px;
-  letter-spacing:3px;
+  letter-spacing:5px;
   color:#777;
-  margin-bottom:8px;
+  font-size:18px;
+  margin-bottom:10px;
 }
 
 h1{
   font-size:34px;
-  margin:5px 0 10px;
-}
-
-.sub{
-  color:#666;
-  line-height:1.8;
-  margin-bottom:25px;
+  margin:0 0 10px;
 }
 
 .character{
-  font-size:65px;
-  margin:20px 0 5px;
+  width:230px;
+  max-width:75%;
+  margin:10px auto 15px;
+  display:block;
 }
 
-.speech{
+.intro{
+  font-size:17px;
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+.card{
   background:white;
-  border-radius:22px;
-  padding:18px;
-  margin:15px auto 25px;
-  max-width:430px;
+  border-radius:24px;
+  padding:25px 20px;
+  margin:20px 0;
   box-shadow:0 8px 25px rgba(0,0,0,.07);
-  line-height:1.7;
+}
+
+.character-talk{
+  font-size:18px;
+  line-height:1.8;
+  font-weight:600;
 }
 
 button{
   width:100%;
-  max-width:420px;
-  border:0;
-  border-radius:50px;
+  border:none;
+  border-radius:40px;
   padding:18px;
-  font-size:19px;
+  font-size:20px;
   font-weight:bold;
-  background:#d98b55;
   color:white;
+  background:#df8d4c;
   cursor:pointer;
+  box-shadow:0 6px 14px rgba(223,141,76,.25);
 }
 
-.result{
+button:active{
+  transform:scale(.98);
+}
+
+#result{
   display:none;
-  background:white;
-  border-radius:28px;
-  padding:30px 22px;
-  margin:30px auto 0;
-  max-width:480px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-.rank{
-  display:inline-block;
-  padding:7px 25px;
-  border:1px solid #d98b55;
-  border-radius:30px;
-  color:#b56e3d;
-  margin-bottom:18px;
+.result-title{
+  color:#df8d4c;
+  font-size:29px;
+  margin:5px 0 15px;
 }
 
-.icon{
-  font-size:55px;
-}
-
-.result h2{
-  font-size:30px;
-  margin:8px 0;
-}
-
-.message{
-  line-height:1.9;
-  font-size:17px;
+.result-text{
+  font-size:18px;
+  line-height:1.8;
 }
 
 .share{
-  margin-top:25px;
-  padding-top:20px;
-  border-top:1px solid #eee;
-  line-height:1.8;
+  background:#fff3f6;
+  border-radius:20px;
+  padding:18px 12px;
+  margin-top:22px;
+  line-height:1.7;
 }
 
 .hashtag{
+  font-size:19px;
   font-weight:bold;
-  color:#c56f42;
-  font-size:18px;
-}
-
-.retry{
-  margin-top:20px;
-  background:white;
-  color:#555;
-  border:1px solid #ccc;
+  color:#d75a78;
 }
 
 .footer{
-  margin-top:45px;
+  margin-top:35px;
   color:#888;
-  font-size:14px;
   line-height:1.8;
+  font-size:14px;
 }
 </style>
 </head>
@@ -138,133 +124,116 @@ button{
 
 <div class="container">
 
-<div class="villa">VILLA CLEIR</div>
+  <div class="villa">VILLA CLEIR</div>
 
-<h1>🌺 くれんちゅ旅みくじ 🌺</h1>
+  <h1>🌺 くれんちゅ旅みくじ 🌺</h1>
 
-<div class="sub">
-Villaクレアへようこそ。<br>
-今日の沖縄旅は、どんな一日になるかな？
-</div>
+  <img
+    class="character"
+    src="118A65D1-E761-4597-AFBD-36BF2AF19DB1.png"
+    alt="くれんちゅ＆くれっしー"
+  >
 
-<div class="character">🍍🌺　🍍</div>
+  <div class="intro">
+    Villaクレアへようこそ。<br>
+    今日の沖縄旅は、どんな一日になるかな？
+  </div>
 
-<div class="speech">
-くれんちゅ＆くれっしーが<br>
-あなたの今日の<strong>「旅運」</strong>を占うよ！<br>
-さっそく引いてみてね♪
-</div>
+  <div class="card" id="start">
+    <div class="character-talk">
+      くれんちゅ＆くれっしーが<br>
+      あなたの今日の「旅運」を占うよ！<br>
+      さっそく引いてみてね♪
+    </div>
+  </div>
 
-<button onclick="draw()">旅みくじを引く</button>
+  <button onclick="drawOmikuji()">旅みくじを引く</button>
 
-<div id="result" class="result">
+  <div class="card" id="result">
 
-<div id="rank" class="rank"></div>
+    <div class="result-title" id="resultTitle"></div>
 
-<div id="icon" class="icon"></div>
+    <div class="result-text" id="resultText"></div>
 
-<h2 id="title"></h2>
+    <div class="share">
+      📸 今日の旅みくじを<br>
+      写真やスクショでシェアしてね！<br><br>
 
-<div id="message" class="message"></div>
+      <span class="hashtag">
+        #Villaクレア旅みくじ
+      </span><br>
 
-<div class="share">
-今日の旅みくじを<br>
-写真やスクショでシェアしてね！<br><br>
+      をつけて投稿してね🌺
+    </div>
 
-<span class="hashtag">#ヴィラクレア旅みくじ</span>
-</div>
+  </div>
 
-<button class="retry" onclick="draw()">
-もう一度引く
-</button>
-
-</div>
-
-<div class="footer">
-Villaクレアでの時間が<br>
-素敵な沖縄の思い出になりますように。
-</div>
+  <div class="footer">
+    Villaクレアでの時間が<br>
+    素敵な沖縄の思い出になりますように。
+  </div>
 
 </div>
 
 <script>
 
-const fortunes = [
+const omikuji = [
 
 {
-rank:"大吉",
-icon:"🌊",
-title:"海運",
-message:"今日は沖縄の青い海が幸運を運んでくれそう。お気に入りの海景色を一枚、旅の思い出に残してみて。"
+ title:"🌺 最高の沖縄日和",
+ text:"今日は思いきり沖縄を楽しめそう！青い海や古宇利島の景色が、忘れられない旅の思い出になるかも。気になった場所には迷わず行ってみて♪"
 },
 
 {
-rank:"大吉",
-icon:"🌅",
-title:"夕日運",
-message:"今日のラッキータイムは夕暮れ。空が染まる時間に、少しだけ立ち止まって沖縄の景色を楽しんでみて。"
+ title:"🌊 海風ラッキー",
+ text:"今日の幸運スポットは海の近く。潮風を感じながらのんびり過ごすと、素敵な発見がありそう。お気に入りの海を探してみてね♪"
 },
 
 {
-rank:"中吉",
-icon:"🌺",
-title:"出会い運",
-message:"今日は思いがけない素敵な出会いがありそう。気になった場所には、ちょっと寄り道してみて。"
+ title:"🌅 夕日チャンス",
+ text:"今日は夕方に幸運が待っているかも。沖縄の空が染まる時間を、少しだけゆっくり眺めてみて。旅のベストショットが撮れる予感！"
 },
 
 {
-rank:"中吉",
-icon:"🍍",
-title:"グルメ運",
-message:"今日は沖縄グルメが幸運のカギ。気になっていた沖縄の味をひとつ楽しんでみて。"
+ title:"🍍 なんくる旅運",
+ text:"予定通りじゃなくても大丈夫。寄り道した先に、沖縄らしい小さな幸せが待っているかも。今日はゆったり気分で楽しんで♪"
 },
 
 {
-rank:"吉",
-icon:"🌴",
-title:"のんびり運",
-message:"今日は予定を詰め込みすぎないのが吉。沖縄時間で、ゆっくり過ごしてみて。"
+ title:"✨ 寄り道ラッキー",
+ text:"今日は偶然の出会いが旅を楽しくしてくれそう。気になるカフェや景色を見つけたら、ちょっと寄り道してみてね♪"
 },
 
 {
-rank:"吉",
-icon:"📸",
-title:"思い出運",
-message:"今日何気なく撮った一枚が、大切な旅の思い出になりそう。くれんちゅたちとも一緒に写真を撮ってみてね。"
+ title:"💛 ほっこり旅運",
+ text:"今日は誰かと過ごす時間が幸運を運んでくれそう。たくさん笑って、写真を撮って、沖縄での時間を楽しんでね♪"
 },
 
 {
-rank:"小吉",
-icon:"✨",
-title:"寄り道運",
-message:"予定になかった寄り道に小さな幸せがありそう。気になる道や景色を見つけたら楽しんでみて。"
-},
-
-{
-rank:"吉",
-icon:"💛",
-title:"しあわせ運",
-message:"今日は小さな幸せを見つけられる日。Villaクレアで過ごす何気ない時間も、旅の思い出にしてね。"
+ title:"🌴 のんびり大吉",
+ text:"今日は急がないことが一番のラッキー。Villaクレアでのんびりしたり、沖縄の風を感じたり。何もしない時間も旅の思い出になるよ♪"
 }
 
 ];
 
-function draw(){
+function drawOmikuji(){
 
-const f=fortunes[Math.floor(Math.random()*fortunes.length)];
+ const item =
+ omikuji[Math.floor(Math.random()*omikuji.length)];
 
-document.getElementById("rank").textContent=f.rank;
-document.getElementById("icon").textContent=f.icon;
-document.getElementById("title").textContent=f.title;
-document.getElementById("message").textContent=f.message;
+ document.getElementById("resultTitle").innerText =
+ item.title;
 
-const result=document.getElementById("result");
-result.style.display="block";
+ document.getElementById("resultText").innerText =
+ item.text;
 
-result.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
+ document.getElementById("result").style.display =
+ "block";
+
+ document.getElementById("result").scrollIntoView({
+   behavior:"smooth",
+   block:"center"
+ });
 
 }
 
