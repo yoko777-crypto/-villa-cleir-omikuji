@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Villaクレア 沖縄旅みくじ</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+               "Yu Gothic", sans-serif;
+  color: #333;
+  background:
+    linear-gradient(
+      rgba(255,255,255,0.72),
+      rgba(255,248,240,0.92)
+    ),
+    linear-gradient(180deg, #bde9f4 0%, #f8efe1 100%);
+  min-height: 100vh;
+}
+
+.page {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 55px 22px 40px;
+  text-align: center;
+}
+
+.brand {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.hibiscus {
+  font-size: 42px;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 31px;
+  margin: 5px 0 8px;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.94);
+  border-radius: 24px;
+  padding: 32px 22px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.before {
+  font-size: 55px;
+  margin: 10px 0 18px;
+}
+
+.message {
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+button {
+  width: 100%;
+  border: none;
+  border-radius: 30px;
+  padding: 17px 15px;
+  margin-top: 25px;
+  font-size: 17px;
+  font-weight: bold;
+  background: #e97886;
+  color: white;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.result {
+  display: none;
+}
+
+.rank {
+  display: inline-block;
+  padding: 7px 22px;
+  border: 1px solid #d79c66;
+  border-radius: 30px;
+  color: #b26d38;
+  font-size: 15px;
+  margin-bottom: 17px;
+}
+
+.fortune-name {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.fortune-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.fortune-text {
+  font-size: 16px;
+  line-height: 2;
+}
+
+.small-happy {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #777;
+}
+
+.again {
+  background: white;
+  color: #555;
+  border: 1px solid #ccc;
+  margin-top: 12px;
+}
+
+.footer {
+  margin-top: 28px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #888;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="brand">
+    VILLA CLEIR × くれんちゅ
+  </div>
+
+  <div class="hibiscus">🌺</div>
+
+  <h1>沖縄旅みくじ</h1>
+
+  <div class="subtitle">
+    今日のあなたの沖縄旅は？<br>
+    旅の楽しみを、ひとつお届けします。
+  </div>
+
+  <div class="card">
+
+    <div id="start">
+
+      <div class="before">🌴</div>
+
+      <div class="message">
+        Villaクレアで過ごす今日。<br>
+        どんな沖縄時間になるでしょう。
+      </div>
+
+      <button onclick="drawFortune()">
+        おみくじを引く 🌺
+      </button>
+
+    </div>
+
+    <div id="result" class="result">
+
+      <div id="rank" class="rank"></div>
+
+      <div id="icon" class="fortune-icon"></div>
+
+      <div id="name" class="fortune-name"></div>
+
+      <div id="text" class="fortune-text"></div>
+
+      <div class="small-happy">
+        今日の「小さなしあわせ」を<br>
+        見つけてみてください 🌺
+      </div>
+
+      <button class="again" onclick="resetFortune()">
+        もう一度引く
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Villaクレアでの時間が<br>
+    素敵な沖縄の思い出になりますように。
+  </div>
+
+</div>
+
+<script>
+
+const fortunes = [
+
+{
+rank:"大吉",
+icon:"🌅",
+name:"夕日運",
+text:"今日は夕暮れが旅のごほうび。少しだけ予定を止めて、沖縄の空が変わっていく時間を楽しんでみて。"
+},
+
+{
+rank:"大吉",
+icon:"🌊",
+name:"海運",
+text:"今日のラッキーアイテムは沖縄の青い海。お気に入りの海景色を一枚、旅の思い出に残してみて。"
+},
+
+{
+rank:"吉",
+icon:"🍽️",
+name:"沖縄グルメ運",
+text:"今日は『おいしい！』に出会えそう。気になっていた沖縄料理や、初めての味に挑戦してみて。"
+},
+
+{
+rank:"大吉",
+icon:"🚙",
+name:"ドライブ運",
+text:"今日は寄り道が正解かも。目的地だけを目指さず、気になる景色を見つけたら少し立ち寄ってみて。"
+},
+
+{
+rank:"中吉",
+icon:"🌴",
+name:"島時間運",
+text:"今日は時計を気にしない時間をつくってみて。何もしない時間も、沖縄旅行の贅沢です。"
+},
+
+{
+rank:"吉",
+icon:"⭐",
+name:"星空運",
+text:"夜になったら一度、空を見上げてみて。昼とは違う沖縄の景色が、今日の思い出になるかも。"
+},
+
+{
+rank:"大吉",
+icon:"❤️",
+name:"小さなしあわせ運",
+text:"何気ない瞬間に幸運あり。笑ったこと、おいしかったもの、きれいだった景色。今日の幸せを一つ見つけてみて。"
+},
+
+{
+rank:"中吉",
+icon:"☕",
+name:"のんびり運",
+text:"今日は急がないことがラッキーアクション。飲み物を片手に、Villaクレアでゆっくり過ごしてみて。"
+},
+
+{
+rank:"吉",
+icon:"📷",
+name:"思い出運",
+text:"今日は写真に残した一枚が、あとから大切な思い出になりそう。あなたらしい沖縄の一枚を撮ってみて。"
+},
+
+{
+rank:"大吉",
+icon:"🌺",
+name:"沖縄満喫運",
+text:"今日は沖縄を思いきり楽しむ日。海も景色も食事も、気になるものには素直にワクワクしてみて。"
+}
+
+];
+
+function drawFortune(){
+
+  const random =
+    Math.floor(Math.random() * fortunes.length);
+
+  const fortune = fortunes[random];
+
+  document.getElementById("rank").textContent =
+    fortune.rank;
+
+  document.getElementById("icon").textContent =
+    fortune.icon;
+
+  document.getElementById("name").textContent =
+    fortune.name;
+
+  document.getElementById("text").textContent =
+    fortune.text;
+
+  document.getElementById("start").style.display =
+    "none";
+
+  document.getElementById("result").style.display =
+    "block";
+}
+
+function resetFortune(){
+
+  document.getElementById("result").style.display =
+    "none";
+
+  document.getElementById("start").style.display =
+    "block";
+}
+
+</script>
+
+</body>
+</html>
