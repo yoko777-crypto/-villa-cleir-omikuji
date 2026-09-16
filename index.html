@@ -4,209 +4,186 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Villaクレア 沖縄旅みくじ</title>
+<title>Villaクレア｜くれんちゅ旅みくじ</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
-               "Yu Gothic", sans-serif;
-  color: #333;
-  background:
-    linear-gradient(
-      rgba(255,255,255,0.72),
-      rgba(255,248,240,0.92)
-    ),
-    linear-gradient(180deg, #bde9f4 0%, #f8efe1 100%);
-  min-height: 100vh;
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  color:#333;
+  text-align:center;
+  background:linear-gradient(180deg,#eef9fb 0%,#fffaf4 100%);
+  min-height:100vh;
 }
 
-.page {
-  width: 100%;
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 55px 22px 40px;
-  text-align: center;
+.container{
+  max-width:650px;
+  margin:auto;
+  padding:35px 20px 60px;
 }
 
-.brand {
-  font-size: 13px;
-  letter-spacing: 2px;
-  color: #777;
-  margin-bottom: 25px;
+.villa{
+  font-size:16px;
+  letter-spacing:3px;
+  color:#777;
+  margin-bottom:8px;
 }
 
-.hibiscus {
-  font-size: 42px;
-  margin-bottom: 5px;
+h1{
+  font-size:34px;
+  margin:5px 0 10px;
 }
 
-h1 {
-  font-size: 31px;
-  margin: 5px 0 8px;
-  letter-spacing: 1px;
+.sub{
+  color:#666;
+  line-height:1.8;
+  margin-bottom:25px;
 }
 
-.subtitle {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.8;
-  margin-bottom: 30px;
+.character{
+  font-size:65px;
+  margin:20px 0 5px;
 }
 
-.card {
-  background: rgba(255,255,255,0.94);
-  border-radius: 24px;
-  padding: 32px 22px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+.speech{
+  background:white;
+  border-radius:22px;
+  padding:18px;
+  margin:15px auto 25px;
+  max-width:430px;
+  box-shadow:0 8px 25px rgba(0,0,0,.07);
+  line-height:1.7;
 }
 
-.before {
-  font-size: 55px;
-  margin: 10px 0 18px;
+button{
+  width:100%;
+  max-width:420px;
+  border:0;
+  border-radius:50px;
+  padding:18px;
+  font-size:19px;
+  font-weight:bold;
+  background:#d98b55;
+  color:white;
+  cursor:pointer;
 }
 
-.message {
-  font-size: 16px;
-  line-height: 1.9;
+.result{
+  display:none;
+  background:white;
+  border-radius:28px;
+  padding:30px 22px;
+  margin:30px auto 0;
+  max-width:480px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-button {
-  width: 100%;
-  border: none;
-  border-radius: 30px;
-  padding: 17px 15px;
-  margin-top: 25px;
-  font-size: 17px;
-  font-weight: bold;
-  background: #e97886;
-  color: white;
-  cursor: pointer;
+.rank{
+  display:inline-block;
+  padding:7px 25px;
+  border:1px solid #d98b55;
+  border-radius:30px;
+  color:#b56e3d;
+  margin-bottom:18px;
 }
 
-button:active {
-  transform: scale(0.98);
+.icon{
+  font-size:55px;
 }
 
-.result {
-  display: none;
+.result h2{
+  font-size:30px;
+  margin:8px 0;
 }
 
-.rank {
-  display: inline-block;
-  padding: 7px 22px;
-  border: 1px solid #d79c66;
-  border-radius: 30px;
-  color: #b26d38;
-  font-size: 15px;
-  margin-bottom: 17px;
+.message{
+  line-height:1.9;
+  font-size:17px;
 }
 
-.fortune-name {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 18px;
+.share{
+  margin-top:25px;
+  padding-top:20px;
+  border-top:1px solid #eee;
+  line-height:1.8;
 }
 
-.fortune-icon {
-  font-size: 48px;
-  margin-bottom: 15px;
+.hashtag{
+  font-weight:bold;
+  color:#c56f42;
+  font-size:18px;
 }
 
-.fortune-text {
-  font-size: 16px;
-  line-height: 2;
+.retry{
+  margin-top:20px;
+  background:white;
+  color:#555;
+  border:1px solid #ccc;
 }
 
-.small-happy {
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-  font-size: 14px;
-  color: #777;
-}
-
-.again {
-  background: white;
-  color: #555;
-  border: 1px solid #ccc;
-  margin-top: 12px;
-}
-
-.footer {
-  margin-top: 28px;
-  font-size: 12px;
-  line-height: 1.8;
-  color: #888;
+.footer{
+  margin-top:45px;
+  color:#888;
+  font-size:14px;
+  line-height:1.8;
 }
 </style>
 </head>
 
 <body>
 
-<div class="page">
+<div class="container">
 
-  <div class="brand">
-    VILLA CLEIR × くれんちゅ
-  </div>
+<div class="villa">VILLA CLEIR</div>
 
-  <div class="hibiscus">🌺</div>
+<h1>🌺 くれんちゅ旅みくじ 🌺</h1>
 
-  <h1>沖縄旅みくじ</h1>
+<div class="sub">
+Villaクレアへようこそ。<br>
+今日の沖縄旅は、どんな一日になるかな？
+</div>
 
-  <div class="subtitle">
-    今日のあなたの沖縄旅は？<br>
-    旅の楽しみを、ひとつお届けします。
-  </div>
+<div class="character">🍍🌺　🍍</div>
 
-  <div class="card">
+<div class="speech">
+くれんちゅ＆くれっしーが<br>
+あなたの今日の<strong>「旅運」</strong>を占うよ！<br>
+さっそく引いてみてね♪
+</div>
 
-    <div id="start">
+<button onclick="draw()">旅みくじを引く</button>
 
-      <div class="before">🌴</div>
+<div id="result" class="result">
 
-      <div class="message">
-        Villaクレアで過ごす今日。<br>
-        どんな沖縄時間になるでしょう。
-      </div>
+<div id="rank" class="rank"></div>
 
-      <button onclick="drawFortune()">
-        おみくじを引く 🌺
-      </button>
+<div id="icon" class="icon"></div>
 
-    </div>
+<h2 id="title"></h2>
 
-    <div id="result" class="result">
+<div id="message" class="message"></div>
 
-      <div id="rank" class="rank"></div>
+<div class="share">
+今日の旅みくじを<br>
+写真やスクショでシェアしてね！<br><br>
 
-      <div id="icon" class="fortune-icon"></div>
+<span class="hashtag">#ヴィラクレア旅みくじ</span>
+</div>
 
-      <div id="name" class="fortune-name"></div>
+<button class="retry" onclick="draw()">
+もう一度引く
+</button>
 
-      <div id="text" class="fortune-text"></div>
+</div>
 
-      <div class="small-happy">
-        今日の「小さなしあわせ」を<br>
-        見つけてみてください 🌺
-      </div>
-
-      <button class="again" onclick="resetFortune()">
-        もう一度引く
-      </button>
-
-    </div>
-
-  </div>
-
-  <div class="footer">
-    Villaクレアでの時間が<br>
-    素敵な沖縄の思い出になりますように。
-  </div>
+<div class="footer">
+Villaクレアでの時間が<br>
+素敵な沖縄の思い出になりますように。
+</div>
 
 </div>
 
@@ -216,109 +193,79 @@ const fortunes = [
 
 {
 rank:"大吉",
-icon:"🌅",
-name:"夕日運",
-text:"今日は夕暮れが旅のごほうび。少しだけ予定を止めて、沖縄の空が変わっていく時間を楽しんでみて。"
-},
-
-{
-rank:"大吉",
 icon:"🌊",
-name:"海運",
-text:"今日のラッキーアイテムは沖縄の青い海。お気に入りの海景色を一枚、旅の思い出に残してみて。"
-},
-
-{
-rank:"吉",
-icon:"🍽️",
-name:"沖縄グルメ運",
-text:"今日は『おいしい！』に出会えそう。気になっていた沖縄料理や、初めての味に挑戦してみて。"
+title:"海運",
+message:"今日は沖縄の青い海が幸運を運んでくれそう。お気に入りの海景色を一枚、旅の思い出に残してみて。"
 },
 
 {
 rank:"大吉",
-icon:"🚙",
-name:"ドライブ運",
-text:"今日は寄り道が正解かも。目的地だけを目指さず、気になる景色を見つけたら少し立ち寄ってみて。"
+icon:"🌅",
+title:"夕日運",
+message:"今日のラッキータイムは夕暮れ。空が染まる時間に、少しだけ立ち止まって沖縄の景色を楽しんでみて。"
 },
 
 {
 rank:"中吉",
-icon:"🌴",
-name:"島時間運",
-text:"今日は時計を気にしない時間をつくってみて。何もしない時間も、沖縄旅行の贅沢です。"
-},
-
-{
-rank:"吉",
-icon:"⭐",
-name:"星空運",
-text:"夜になったら一度、空を見上げてみて。昼とは違う沖縄の景色が、今日の思い出になるかも。"
-},
-
-{
-rank:"大吉",
-icon:"❤️",
-name:"小さなしあわせ運",
-text:"何気ない瞬間に幸運あり。笑ったこと、おいしかったもの、きれいだった景色。今日の幸せを一つ見つけてみて。"
-},
-
-{
-rank:"中吉",
-icon:"☕",
-name:"のんびり運",
-text:"今日は急がないことがラッキーアクション。飲み物を片手に、Villaクレアでゆっくり過ごしてみて。"
-},
-
-{
-rank:"吉",
-icon:"📷",
-name:"思い出運",
-text:"今日は写真に残した一枚が、あとから大切な思い出になりそう。あなたらしい沖縄の一枚を撮ってみて。"
-},
-
-{
-rank:"大吉",
 icon:"🌺",
-name:"沖縄満喫運",
-text:"今日は沖縄を思いきり楽しむ日。海も景色も食事も、気になるものには素直にワクワクしてみて。"
+title:"出会い運",
+message:"今日は思いがけない素敵な出会いがありそう。気になった場所には、ちょっと寄り道してみて。"
+},
+
+{
+rank:"中吉",
+icon:"🍍",
+title:"グルメ運",
+message:"今日は沖縄グルメが幸運のカギ。気になっていた沖縄の味をひとつ楽しんでみて。"
+},
+
+{
+rank:"吉",
+icon:"🌴",
+title:"のんびり運",
+message:"今日は予定を詰め込みすぎないのが吉。沖縄時間で、ゆっくり過ごしてみて。"
+},
+
+{
+rank:"吉",
+icon:"📸",
+title:"思い出運",
+message:"今日何気なく撮った一枚が、大切な旅の思い出になりそう。くれんちゅたちとも一緒に写真を撮ってみてね。"
+},
+
+{
+rank:"小吉",
+icon:"✨",
+title:"寄り道運",
+message:"予定になかった寄り道に小さな幸せがありそう。気になる道や景色を見つけたら楽しんでみて。"
+},
+
+{
+rank:"吉",
+icon:"💛",
+title:"しあわせ運",
+message:"今日は小さな幸せを見つけられる日。Villaクレアで過ごす何気ない時間も、旅の思い出にしてね。"
 }
 
 ];
 
-function drawFortune(){
+function draw(){
 
-  const random =
-    Math.floor(Math.random() * fortunes.length);
+const f=fortunes[Math.floor(Math.random()*fortunes.length)];
 
-  const fortune = fortunes[random];
+document.getElementById("rank").textContent=f.rank;
+document.getElementById("icon").textContent=f.icon;
+document.getElementById("title").textContent=f.title;
+document.getElementById("message").textContent=f.message;
 
-  document.getElementById("rank").textContent =
-    fortune.rank;
+const result=document.getElementById("result");
+result.style.display="block";
 
-  document.getElementById("icon").textContent =
-    fortune.icon;
+result.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
 
-  document.getElementById("name").textContent =
-    fortune.name;
-
-  document.getElementById("text").textContent =
-    fortune.text;
-
-  document.getElementById("start").style.display =
-    "none";
-
-  document.getElementById("result").style.display =
-    "block";
-}
-
-function resetFortune(){
-
-  document.getElementById("result").style.display =
-    "none";
-
-  document.getElementById("start").style.display =
-    "block";
 }
 
 </script>
