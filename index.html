@@ -13,227 +13,367 @@
 
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Yu Gothic",sans-serif;
   color:#333;
   text-align:center;
-  background:linear-gradient(180deg,#eef9fb 0%,#fffaf3 100%);
-  min-height:100vh;
+  background:
+    linear-gradient(
+      180deg,
+      #eefbfc 0%,
+      #fffdf8 45%,
+      #fff8ed 100%
+    );
 }
 
 .container{
-  max-width:520px;
+  max-width:600px;
   margin:auto;
-  padding:45px 20px 55px;
+  padding:45px 22px 60px;
 }
 
 .villa{
-  letter-spacing:5px;
+  letter-spacing:7px;
   color:#777;
-  font-size:18px;
+  font-size:17px;
   margin-bottom:10px;
 }
 
 h1{
-  font-size:34px;
-  margin:0 0 10px;
+  font-size:32px;
+  margin:8px 0 20px;
+  line-height:1.35;
+}
+
+.subtitle{
+  font-size:17px;
+  line-height:1.8;
+  margin:10px 0 25px;
 }
 
 .character{
-  width:230px;
-  max-width:75%;
-  margin:10px auto 15px;
+  width:78%;
+  max-width:370px;
+  border-radius:18px;
+  margin:5px auto 20px;
   display:block;
 }
 
-.intro{
-  font-size:17px;
-  line-height:1.8;
-  margin-bottom:20px;
-}
-
-.card{
+.message{
   background:white;
-  border-radius:24px;
-  padding:25px 20px;
-  margin:20px 0;
-  box-shadow:0 8px 25px rgba(0,0,0,.07);
-}
-
-.character-talk{
-  font-size:18px;
+  border-radius:25px;
+  padding:23px 20px;
+  margin:22px 0;
+  box-shadow:0 7px 25px rgba(0,0,0,.06);
   line-height:1.8;
-  font-weight:600;
 }
 
 button{
   width:100%;
   border:none;
-  border-radius:40px;
-  padding:18px;
-  font-size:20px;
+  border-radius:50px;
+  padding:20px 10px;
+  font-size:21px;
   font-weight:bold;
-  color:white;
-  background:#df8d4c;
   cursor:pointer;
-  box-shadow:0 6px 14px rgba(223,141,76,.25);
+  margin:15px 0;
 }
 
-button:active{
-  transform:scale(.98);
+.draw{
+  background:#e99047;
+  color:white;
+  box-shadow:0 7px 18px rgba(220,130,60,.25);
+}
+
+.again{
+  background:#fff;
+  color:#df8240;
+  border:2px solid #df8240;
+  display:none;
 }
 
 #result{
   display:none;
-}
-
-.result-title{
-  color:#df8d4c;
-  font-size:29px;
-  margin:5px 0 15px;
-}
-
-.result-text{
-  font-size:18px;
-  line-height:1.8;
-}
-
-.share{
-  background:#fff3f6;
-  border-radius:20px;
-  padding:18px 12px;
+  background:white;
+  border-radius:28px;
+  padding:28px 20px;
   margin-top:22px;
+  box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.resultTitle{
+  font-size:29px;
+  font-weight:bold;
+  color:#d97d3d;
+  margin-bottom:17px;
+}
+
+.resultText{
+  font-size:17px;
+  line-height:1.9;
+}
+
+.action{
+  margin-top:22px;
+  padding:18px;
+  border-radius:20px;
+  background:#fff4e9;
   line-height:1.7;
 }
 
+.share{
+  margin-top:22px;
+  padding:20px 15px;
+  border-radius:22px;
+  background:#fff0f5;
+  line-height:1.8;
+}
+
 .hashtag{
-  font-size:19px;
+  display:block;
+  margin:13px 0 4px;
+  color:#db5277;
+  font-size:21px;
   font-weight:bold;
-  color:#d75a78;
+}
+
+.small{
+  font-size:13px;
+  color:#777;
 }
 
 .footer{
-  margin-top:35px;
+  margin-top:45px;
   color:#888;
-  line-height:1.8;
   font-size:14px;
+  line-height:1.8;
+}
+
+@media(max-width:480px){
+
+  .container{
+    padding:35px 18px 50px;
+  }
+
+  h1{
+    font-size:29px;
+  }
+
+  .character{
+    width:90%;
+  }
+
 }
 </style>
 </head>
+
 
 <body>
 
 <div class="container">
 
-  <div class="villa">VILLA CLEIR</div>
+<div class="villa">
+VILLA CLEIR
+</div>
 
-  <h1>🌺 くれんちゅ旅みくじ 🌺</h1>
+<h1>
+🌺 くれんちゅ旅みくじ 🌺
+</h1>
 
-  <img
-    class="character"
-    src="118A65D1-E761-4597-AFBD-36BF2AF19DB1.png"
-    alt="くれんちゅ＆くれっしー"
-  >
+<img
+class="character"
+src="118A65D1-E761-4597-AFBD-36BF2AF19DB1.png"
+alt="くれんちゅとくれっしー"
+>
 
-  <div class="intro">
-    Villaクレアへようこそ。<br>
-    今日の沖縄旅は、どんな一日になるかな？
-  </div>
+<p class="subtitle">
+Villaクレアへようこそ。<br>
+今日の沖縄旅は、どんな一日になるかな？
+</p>
 
-  <div class="card" id="start">
-    <div class="character-talk">
-      くれんちゅ＆くれっしーが<br>
-      あなたの今日の「旅運」を占うよ！<br>
-      さっそく引いてみてね♪
-    </div>
-  </div>
+<div class="message">
 
-  <button onclick="drawOmikuji()">旅みくじを引く</button>
+<strong>
+くれんちゅ＆くれっしーが<br>
+あなたの今日の沖縄旅を占うよ🌺
+</strong>
 
-  <div class="card" id="result">
+<br><br>
 
-    <div class="result-title" id="resultTitle"></div>
-
-    <div class="result-text" id="resultText"></div>
-
-    <div class="share">
-      📸 今日の旅みくじを<br>
-      写真やスクショでシェアしてね！<br><br>
-
-      <span class="hashtag">
-        #Villaクレア旅みくじ
-      </span><br>
-
-      をつけて投稿してね🌺
-    </div>
-
-  </div>
-
-  <div class="footer">
-    Villaクレアでの時間が<br>
-    素敵な沖縄の思い出になりますように。
-  </div>
+ボタンを押して<br>
+旅みくじを引いてみてね♪
 
 </div>
+
+
+<button class="draw" onclick="drawOmikuji()">
+🌺 旅みくじを引く
+</button>
+
+
+<div id="result">
+
+<div id="resultTitle" class="resultTitle"></div>
+
+<div id="resultText" class="resultText"></div>
+
+<div id="action" class="action"></div>
+
+
+<div class="share">
+
+📸 <strong>旅の思い出に</strong><br>
+
+今日の旅みくじを<br>
+スクショしてシェアしてね！
+
+<span class="hashtag">
+#Villaクレア旅みくじ
+</span>
+
+Villaクレアで撮った写真と一緒に<br>
+投稿してくれたらうれしいです🌺
+
+<br><br>
+
+<span class="small">
+InstagramでVillaクレアをメンションしてね♪
+</span>
+
+</div>
+
+</div>
+
+
+<button
+id="again"
+class="again"
+onclick="drawOmikuji()"
+>
+もう一度引く 🌺
+</button>
+
+
+<div class="footer">
+
+Villaクレアでの時間が<br>
+素敵な沖縄の思い出になりますように。
+
+<br><br>
+
+🌺 Villaクレア × くれんちゅ 🌺
+
+</div>
+
+</div>
+
 
 <script>
 
 const omikuji = [
 
 {
- title:"🌺 最高の沖縄日和",
- text:"今日は思いきり沖縄を楽しめそう！青い海や古宇利島の景色が、忘れられない旅の思い出になるかも。気になった場所には迷わず行ってみて♪"
+title:"🌅 夕日チャンス",
+text:
+"今日は夕方に幸運が待っているかも。沖縄の空が染まる時間を、少しだけゆっくり眺めてみて。旅のベストショットが撮れる予感！",
+action:
+"🌺 今日のラッキーアクション<br><strong>夕方、空を見上げる</strong>"
 },
 
 {
- title:"🌊 海風ラッキー",
- text:"今日の幸運スポットは海の近く。潮風を感じながらのんびり過ごすと、素敵な発見がありそう。お気に入りの海を探してみてね♪"
+title:"🌊 海色ラッキー",
+text:
+"今日のあなたには沖縄の青が幸運を運んでくれそう。海が見えたら、少し立ち止まって眺めてみて。思いがけない素敵な景色に出会えるかも。",
+action:
+"🌺 今日のラッキーアクション<br><strong>お気に入りの海を1枚撮る</strong>"
 },
 
 {
- title:"🌅 夕日チャンス",
- text:"今日は夕方に幸運が待っているかも。沖縄の空が染まる時間を、少しだけゆっくり眺めてみて。旅のベストショットが撮れる予感！"
+title:"🌺 なんくる旅日和",
+text:
+"今日は予定を詰め込みすぎないのが吉。気になった道、気になったお店、気になった景色へ。寄り道から楽しい思い出が生まれそう。",
+action:
+"🌺 今日のラッキーアクション<br><strong>ひとつだけ寄り道してみる</strong>"
 },
 
 {
- title:"🍍 なんくる旅運",
- text:"予定通りじゃなくても大丈夫。寄り道した先に、沖縄らしい小さな幸せが待っているかも。今日はゆったり気分で楽しんで♪"
+title:"🍍 沖縄グルメ運",
+text:
+"今日はおいしい出会いがありそう！気になった沖縄グルメを見つけたら、迷わず挑戦してみて。旅の忘れられない味になるかも。",
+action:
+"🌺 今日のラッキーアクション<br><strong>初めての沖縄グルメを食べる</strong>"
 },
 
 {
- title:"✨ 寄り道ラッキー",
- text:"今日は偶然の出会いが旅を楽しくしてくれそう。気になるカフェや景色を見つけたら、ちょっと寄り道してみてね♪"
+title:"📸 ベストショット運",
+text:
+"今日は写真運が絶好調。何気なく撮った一枚が、今回の沖縄旅行で一番好きな写真になるかも。景色だけじゃなく、一緒に旅する人との写真も忘れずに。",
+action:
+"🌺 今日のラッキーアクション<br><strong>みんなで記念写真を撮る</strong>"
 },
 
 {
- title:"💛 ほっこり旅運",
- text:"今日は誰かと過ごす時間が幸運を運んでくれそう。たくさん笑って、写真を撮って、沖縄での時間を楽しんでね♪"
+title:"🌴 のんびり島時間",
+text:
+"今日は『何もしない時間』が幸運を連れてきそう。Villaクレアでゆっくりしたり、風を感じたり。沖縄時間を楽しむ日。",
+action:
+"🌺 今日のラッキーアクション<br><strong>10分だけ何もしない</strong>"
 },
 
 {
- title:"🌴 のんびり大吉",
- text:"今日は急がないことが一番のラッキー。Villaクレアでのんびりしたり、沖縄の風を感じたり。何もしない時間も旅の思い出になるよ♪"
+title:"✨ 偶然の出会い運",
+text:
+"今日は予定になかった場所にご縁がありそう。ふと気になった景色や道、お店を見つけたら、その直感を大切にしてみて。",
+action:
+"🌺 今日のラッキーアクション<br><strong>『気になる！』をひとつ選ぶ</strong>"
+},
+
+{
+title:"💗 しあわせ発見運",
+text:
+"今日は小さな幸せを見つけるのが上手な日。青い空、おいしいもの、笑った瞬間。旅の中の『好き』をひとつ見つけてみて。",
+action:
+"🌺 今日のラッキーアクション<br><strong>今日一番の『好き』を写真に残す</strong>"
+},
+
+{
+title:"🌺 くれんちゅ大吉",
+text:
+"今日は沖縄を思いっきり楽しむ日！予定通りでも、予定外でも大丈夫。今日起きること全部が、あとから笑って話せる旅の思い出になりそう。",
+action:
+"🌺 今日のラッキーアクション<br><strong>沖縄でやりたいことをひとつ叶える</strong>"
 }
 
 ];
 
+
 function drawOmikuji(){
 
- const item =
- omikuji[Math.floor(Math.random()*omikuji.length)];
+const result =
+omikuji[Math.floor(Math.random()*omikuji.length)];
 
- document.getElementById("resultTitle").innerText =
- item.title;
+document.getElementById("resultTitle").innerHTML =
+result.title;
 
- document.getElementById("resultText").innerText =
- item.text;
+document.getElementById("resultText").innerHTML =
+result.text;
 
- document.getElementById("result").style.display =
- "block";
+document.getElementById("action").innerHTML =
+result.action;
 
- document.getElementById("result").scrollIntoView({
-   behavior:"smooth",
-   block:"center"
- });
+document.getElementById("result").style.display =
+"block";
+
+document.getElementById("again").style.display =
+"block";
+
+setTimeout(function(){
+
+document.getElementById("result").scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+},100);
 
 }
 
